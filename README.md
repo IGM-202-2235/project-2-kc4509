@@ -15,13 +15,16 @@ _A brief explanation of your simulation._
 
 ### Controls
 
--   _List all of the actions the player can have in your simulation_
-    -   _Include how to preform each action ( keyboard, mouse, UI Input )_
+-   _Player Movement_
+    -   _W - move up_
+    -   _A - move left_
+    -   _S - move down_
+    -   _D - move right_
     -   _Include what impact an action has in the simulation ( if is could be unclear )_
 
-## _Agent 1 Name_
+## _Ghost_
 
-_A brief explanation of this agent._
+_Things that player can collect._
 
 ### _State 1 Name_
 
