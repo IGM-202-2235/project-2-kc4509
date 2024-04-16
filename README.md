@@ -1,4 +1,4 @@
-# Project _NAME_
+# Project _GhostEater_
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
@@ -11,7 +11,7 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-_A brief explanation of your simulation._
+_There are two Pacmans that are chasing after ghosts. The yellow one can be controlled by the player while the red one uses seek to find ghosts. Whoever ends up with more ghosts/points wins._
 
 ### Controls
 
@@ -20,75 +20,35 @@ _A brief explanation of your simulation._
     -   _A - move left_
     -   _S - move down_
     -   _D - move right_
-    -   _Include what impact an action has in the simulation ( if is could be unclear )_
 
 ## _Ghost_
 
-_Things that player can collect._
-
-### _State 1 Name_
-
-**Objective:** _A brief explanation of this state's objective._
+_Gameobjects that player can collect._
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-   - _If behavior has input data list it here_
-   - _eg, Flee - nearest Agent2_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
+- _Flocking_
+   - _Seperate_
+   - _Align_
+   - _Cohesion_
+- Obstacles - _Pacman_
+- Seperation - _Itself, ghosts_  
 
-- _List all the ways this agent can transition to this state_
-   - _eg, When this agent gets within range of Agent2_
-   - _eg, When this agent has reached target of State2_
-   
-### _State 2 Name_
+## _Pacman(Player)_
 
-**Objective:** _A brief explanation of this state's objective._
+_A gameobject that player can control._
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
+- _Seperation from ghosts_
 
-- _List all the ways this agent can transition to this state_
+## _Pacman(Enemy)_
 
-## _Agent 2 Name_
-
-_A brief explanation of this agent._
-
-### _State 1 Name_
-
-**Objective:** _A brief explanation of this state's objective._
+_Enemy pacman that competes against ._
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
-   
-### _State 2 Name_
-
-**Objective:** _A brief explanation of this state's objective._
-
-#### Steering Behaviors
-
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
+-_Seek ghosts_ 
 
 ## Sources
 
@@ -97,9 +57,9 @@ _A brief explanation of this agent._
 
 ## Make it Your Own
 
-- _List out what you added to your game to make it different for you_
-- _If you will add more agents or states make sure to list here and add it to the documention above_
-- _If you will add your own assets make sure to list it here and add it to the Sources section
+- _Add different difficulty levels_
+- _Make it so it can be PVP with one player using WASD and the other using IJKL_
+- _Making my own art_
 
 ## Known Issues
 
@@ -108,4 +68,5 @@ _List any errors, lack of error checking, or specific information that I need to
 ### Requirements not completed
 
 _If you did not complete a project requirement, notate that here_
+
 
