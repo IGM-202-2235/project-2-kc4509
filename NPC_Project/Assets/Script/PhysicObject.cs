@@ -19,6 +19,7 @@ public class PhysicObject : MonoBehaviour
     //Things that might go away
     public bool useFriction, useGravity;
     public float coeff, gravityScalar;
+    public float radius;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,8 @@ public class PhysicObject : MonoBehaviour
         //transform.rotation = Quaternion.LookRotation(direction);
 
         transform.position = position;
+
+        transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
 
         // Zero out acceleration - New
         acceleration = Vector3.zero;
@@ -112,5 +115,9 @@ public class PhysicObject : MonoBehaviour
         }
         return false;
     }
+    
+    // public float getRadius(){
+    //     radius = 
+    // }
 
 }

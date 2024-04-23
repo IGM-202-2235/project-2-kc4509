@@ -14,9 +14,7 @@ public class SpawnManager : Singleton<SpawnManager>
         Car,
         Robot
     }
-
-    public List<Agent> enemies;
-
+    public List<Obstacle> obstacles = new List<Obstacle>();
     public int enemyCount = 5;
     public List<Agent> spawnedEnemies;
 
@@ -65,6 +63,7 @@ public class SpawnManager : Singleton<SpawnManager>
         float x = Gaussian(0, width / 8);
         float y = Gaussian(0, height / 8);
         newEnemy.transform.position = new Vector3(-x, y, 0);
+        newEnemy.transform.rotation = Quaternion.identity;
 
         spawnedEnemies.Add(newEnemy);
     }
