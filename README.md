@@ -1,4 +1,4 @@
-# Project _GhostEater_
+# Project _Starcast Fishing_
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
@@ -11,7 +11,7 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-_There are two Pacmans that are chasing after ghosts. The yellow one can be controlled by the player while the red one uses seek to find ghosts. Whoever ends up with more ghosts/points wins._
+_Two spaceships compete to see who gets the most fishes._
 
 ### Controls
 
@@ -21,7 +21,7 @@ _There are two Pacmans that are chasing after ghosts. The yellow one can be cont
     -   _S - move down_
     -   _D - move right_
 
-## _Ghost_
+## _Fish_
 
 _Gameobjects that player can collect._
 
@@ -31,10 +31,10 @@ _Gameobjects that player can collect._
    - _Seperate_
    - _Align_
    - _Cohesion_
-- Obstacles - _Pacman_
-- Seperation - _Itself, ghosts_  
+- Obstacles - _Astoroids_
+- Seperation - _Itself, other fishes_  
 
-## _Pacman(Player)_
+## _Blue Ship(Player)_
 
 _A gameobject that player can control._
 
