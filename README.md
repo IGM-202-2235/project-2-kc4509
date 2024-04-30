@@ -31,8 +31,9 @@ _Gameobjects that player can collect._
    - _Seperate_
    - _Align_
    - _Cohesion_
-- Obstacles - _Astoroids_
-- Seperation - _Itself, other fishes_  
+- Avoid Obstacles - _Astoroids_
+- Seperation - _Itself, other fishes_
+- _Flee_ - _Red ship, Blue ship_
 
 ## _Blue Ship(Player)_
 
@@ -40,33 +41,41 @@ _A gameobject that player can control._
 
 #### Steering Behaviors
 
-- _Seperation from ghosts_
+- _None, it is controlled by Player_
 
-## _Pacman(Enemy)_
+## _Red Ship(Enemy)_
 
-_Enemy pacman that competes against ._
+_Enemy ship that turns fishes red_
 
 #### Steering Behaviors
 
--_Seek ghosts_ 
+-_Seek_ - _fishes_ 
+
+## _Stars_
+
+_Background floatly decorations_
+
+#### Steering Behaviors
+
+-_Wander_ 
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+-   _None_
 
 ## Make it Your Own
 
-- _Add different difficulty levels_
-- _Make it so it can be PVP with one player using WASD and the other using IJKL_
-- _Making my own art_
+- _Add Player vs computer_
+- _Made my own art_
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+_There is one fish that doesn't change colors_
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+### Additional 
+_I would like to work more on this game in the future so some additional things I would like to add is having different difficulties and changing the speed for the player depending on what they chose_
+_Another thing I wanted to add is a 2nd mode which allows for multiplayer._
 
 
