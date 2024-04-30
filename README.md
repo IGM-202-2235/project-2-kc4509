@@ -31,9 +31,12 @@ _Gameobjects that player can collect._
    - _Seperate_
    - _Align_
    - _Cohesion_
-- Avoid Obstacles - _Astoroids_
-- Seperation - _Itself, other fishes_
-- _Flee_ - _Red ship, Blue ship_
+- Avoid Obstacles
+  - _Astoroids_
+- Seperation
+  - _Itself, other fishes_
+- _Flee_
+  - _Red ship, Blue ship_
 
 ## _Blue Ship(Player)_
 
@@ -49,7 +52,8 @@ _Enemy ship that turns fishes red_
 
 #### Steering Behaviors
 
--_Seek_ - _fishes_ 
+-_Seek_ 
+    - _fishes_ 
 
 ## _Stars_
 
@@ -76,6 +80,6 @@ _There is one fish that doesn't change colors_
 
 ### Additional 
 _I would like to work more on this game in the future so some additional things I would like to add is having different difficulties and changing the speed for the player depending on what they chose_
-_Another thing I wanted to add is a 2nd mode which allows for multiplayer._
+_Another thing I wanted to add is a 2nd mode which allows for multiplayer. Maybe add powerups?_
 
 
