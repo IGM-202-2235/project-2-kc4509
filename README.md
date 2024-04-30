@@ -75,12 +75,13 @@ _Background floatly decorations_
 ## Known Issues
 
 _There is one fish that doesn't change colors_
-_I tried to fix the background and i ended up breaking my entire code so I reverted it back to a version that works_
+_I tried to fix the background and I ended up breaking my entire code so I reverted it to a version that works_
+_My obstacles might be off since the background is off, I don't know how to fix it_
 
 ### Requirements not completed
 
 ### Additional 
-_I would like to work more on this game in the future so some additional things I would like to add is having different difficulties and changing the speed for the player depending on what they chose_
+_I would like to work more on this game in the future so some additional things I would like to add are having different difficulties and changing the speed for the player depending on what they chose_
 _Another thing I wanted to add is a 2nd mode which allows for multiplayer. Maybe add powerups?_
 
 
