@@ -6,7 +6,8 @@ public class SpawnManager : Singleton<SpawnManager>
     // (Optional) Prevent non-singleton constructor use.
     protected SpawnManager() { }
 
-    public Agent agent;
+    public Agent starAgent;
+    public Agent fishAgent;
     public List<SpriteInfo> fishes;
 
     public enum EnemyTypes
@@ -15,8 +16,10 @@ public class SpawnManager : Singleton<SpawnManager>
         Robot
     }
     public List<Obstacle> obstacles = new List<Obstacle>();
-    public int fishCount = 5;
+    public int fishCount = 10;
+    public int starCount = 8;
     public List<Agent> spawnedFishes;
+    public List<Agent> stars;
     public List<SpriteRenderer> fishesRender;
 
     // Start is called before the first frame update
@@ -48,13 +51,18 @@ public class SpawnManager : Singleton<SpawnManager>
 
         for (int i = 0; i < fishCount; i++)
         {
-            spawnEnemy();
+            spawnFish();
         };
+        for (int i = 0; i < starCount; i++)
+        {
+            spawnStars();
+        };
+
     }
 
-    public void spawnEnemy()
+    public void spawnFish()
     {
-        Agent newFish = Instantiate(agent);
+        Agent newFish = Instantiate(fishAgent);
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
@@ -64,7 +72,22 @@ public class SpawnManager : Singleton<SpawnManager>
         newFish.transform.position = new Vector3(-x, y, 0);
         newFish.transform.rotation = Quaternion.identity;
 
+
         spawnedFishes.Add(newFish);
+    }
+
+    public void spawnStars()
+    {
+        Agent newStar = Instantiate(starAgent);
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+        //width & height divided by 8 for standard deviations
+        float x = Gaussian(0, width / 8);
+        float y = Gaussian(0, height / 8);
+        newStar.transform.position = new Vector3(-x, y, 0);
+        newStar.transform.rotation = Quaternion.identity;
+        stars.Add(newStar);
     }
 
     void cleanup()
@@ -78,5 +101,15 @@ public class SpawnManager : Singleton<SpawnManager>
         }
 
         spawnedFishes.Clear();
+
+        foreach (Agent newstar in stars)
+        {
+            //Only destroys the spriteRender and not the gameObject
+            //Will not clean up reference when calling destroyed
+            //Need to include .gameObject
+            Destroy(newstar.gameObject);
+        }
+
+        stars.Clear();
     }
 }
