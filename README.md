@@ -75,6 +75,7 @@ _Background floatly decorations_
 ## Known Issues
 
 _There is one fish that doesn't change colors_
+_I tried to fix the background and i ended up breaking my entire code so I reverted it back to a version that works_
 
 ### Requirements not completed
 
