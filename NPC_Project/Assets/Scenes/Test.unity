@@ -375,7 +375,7 @@ MonoBehaviour:
   maxForce: 3
   spawnManager: {fileID: 2034836195}
   target: {fileID: 1096972777}
-  fleeWeight: 0.1
+  fleeWeight: 0.05
   boundWeight: 1
 --- !u!114 &155533377
 MonoBehaviour:
@@ -396,7 +396,7 @@ MonoBehaviour:
   maxForce: 3
   spawnManager: {fileID: 2034836195}
   target: {fileID: 634254958}
-  fleeWeight: 0.1
+  fleeWeight: 0.05
   boundWeight: 1
 --- !u!1001 &308986084
 PrefabInstance:
@@ -764,7 +764,7 @@ Transform:
   m_GameObject: {fileID: 634254950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.31, y: -0.64, z: 0}
+  m_LocalPosition: {x: 2.76, y: -0.64, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -941,12 +941,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c31e5047e7d2c47855f7910564277f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicObject: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  physicObject: {fileID: 634254957}
+  spriteRenderer: {fileID: 634254951}
   min: {x: 0, y: 0, z: 0}
   max: {x: 0, y: 0, z: 0}
   maxForce: 3
-  spawnManager: {fileID: 0}
+  spawnManager: {fileID: 2034836195}
   seekWeight: 1
   boundWeight: 1
 --- !u!1 &910534515
@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
