@@ -61,7 +61,7 @@ _Background floatly decorations_
 
 #### Steering Behaviors
 
--_Wander_ 
+- _Wander_
 
 ## Sources
 
