@@ -52,8 +52,8 @@ _Enemy ship that turns fishes red_
 
 #### Steering Behaviors
 
--_Seek_ 
-    - _fishes_ 
+- _Seek_
+  - _Fishes_
 
 ## _Stars_
 
