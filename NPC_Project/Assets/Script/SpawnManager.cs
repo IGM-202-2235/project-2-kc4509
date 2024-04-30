@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ public class SpawnManager : Singleton<SpawnManager>
     protected SpawnManager() { }
 
     public Agent agent;
+    public List<SpriteInfo> fishes;
 
     public enum EnemyTypes
     {
@@ -15,8 +15,9 @@ public class SpawnManager : Singleton<SpawnManager>
         Robot
     }
     public List<Obstacle> obstacles = new List<Obstacle>();
-    public int enemyCount = 5;
-    public List<Agent> spawnedEnemies;
+    public int fishCount = 5;
+    public List<Agent> spawnedFishes;
+    public List<SpriteRenderer> fishesRender;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         cleanup();
 
-        for (int i = 0; i < enemyCount; i++)
+        for (int i = 0; i < fishCount; i++)
         {
             spawnEnemy();
         };
@@ -53,31 +54,29 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void spawnEnemy()
     {
-        Agent newEnemy = Instantiate(agent);
-        //GameObject newEnemy;
-        //newEnemy.color = Random.ColorHSV(0, 1, 1, 1, 1, 1);
+        Agent newFish = Instantiate(agent);
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
         //width & height divided by 8 for standard deviations
         float x = Gaussian(0, width / 8);
         float y = Gaussian(0, height / 8);
-        newEnemy.transform.position = new Vector3(-x, y, 0);
-        newEnemy.transform.rotation = Quaternion.identity;
+        newFish.transform.position = new Vector3(-x, y, 0);
+        newFish.transform.rotation = Quaternion.identity;
 
-        spawnedEnemies.Add(newEnemy);
+        spawnedFishes.Add(newFish);
     }
 
     void cleanup()
     {
-        foreach (Agent newEnemy in spawnedEnemies)
+        foreach (Agent newFish in spawnedFishes)
         {
             //Only destroys the spriteRender and not the gameObject
             //Will not clean up reference when calling destroyed
             //Need to include .gameObject
-            Destroy(newEnemy.gameObject);
+            Destroy(newFish.gameObject);
         }
 
-        spawnedEnemies.Clear();
+        spawnedFishes.Clear();
     }
 }

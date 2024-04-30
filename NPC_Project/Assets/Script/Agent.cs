@@ -10,6 +10,8 @@ public abstract class Agent : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     protected PhysicObject physicObject;
+    public SpriteRenderer spriteRenderer;
+    public Vector3 min, max;
 
     protected Vector3 totalForces = Vector3.zero;
     public float maxForce = 3f;
@@ -18,11 +20,17 @@ public abstract class Agent : MonoBehaviour
     protected List<Vector3> foundObstaclePositions = new List<Vector3>();
     void Start()
     {
+        spriteRenderer = transform.GetComponent<SpriteRenderer>();
+
+        min = spriteRenderer.bounds.min;
+        max = spriteRenderer.bounds.max;
     }
 
     // Update is called once per frame
     void Update()
     {
+        min = spriteRenderer.bounds.min;
+        max = spriteRenderer.bounds.max;
         //Vector3 sterringForce = CaluculateSteeringForces();
         totalForces = CaluculateSteeringForces();
         totalForces = Vector3.ClampMagnitude(totalForces, maxForce);
@@ -60,9 +68,21 @@ public abstract class Agent : MonoBehaviour
     }
 
 
-    public Vector3 Seek(Agent target)
+    public Vector3 Seek()
     {
-        return Seek(target.transform.position);
+        float currentDistance = 100;
+        Vector3 currentVec = Vector3.zero;
+        foreach (Agent agent in spawnManager.spawnedFishes)
+        {
+            float distance = Vector3.Distance(transform.position, agent.transform.position);
+            Vector3 vec = agent.transform.position;
+            if (distance < currentDistance && agent.spriteRenderer.color != Color.red)
+            {
+                currentDistance = distance;
+                currentVec = vec;
+            }
+        }
+        return Seek(currentVec);
     }
 
     public Vector3 Flee(Agent target)
@@ -114,13 +134,16 @@ public abstract class Agent : MonoBehaviour
         int count = 0;
         for (int i = 0; i < targets.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, targets[i].transform.position);
-            if (this != targets[i] && distance < desiredSeparation)
+            if (targets[i] != null)
             {
-                Vector3 diff = transform.position - targets[i].transform.position;
-                diff.Normalize();
-                sum += diff;
-                count++;
+                float distance = Vector3.Distance(transform.position, targets[i].transform.position);
+                if (this != targets[i] && distance < desiredSeparation)
+                {
+                    Vector3 diff = transform.position - targets[i].transform.position;
+                    diff.Normalize();
+                    sum += diff;
+                    count++;
+                }
             }
         }
         if (count > 0)
@@ -140,7 +163,10 @@ public abstract class Agent : MonoBehaviour
         Vector3 steeringForce = Vector3.zero;
         for (int i = 0; i < targets.Count; i++)
         {
-            alignForce += targets[i].physicObject.Velocity;
+            if(targets[i] != null){
+                alignForce += targets[i].physicObject.Velocity;
+            }
+            
         }
         alignForce = alignForce / targets.Count;
         alignForce.Normalize();
@@ -156,12 +182,16 @@ public abstract class Agent : MonoBehaviour
         int count = 0;
         for (int i = 0; i < targets.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, targets[i].transform.position);
-            if ((this != targets[i]) && (distance < neighborDistance))
+            if (targets[i] != null)
             {
-                cohesionForce += targets[i].transform.position;
-                count++;
+                float distance = Vector3.Distance(transform.position, targets[i].transform.position);
+                if ((this != targets[i]) && (distance < neighborDistance))
+                {
+                    cohesionForce += targets[i].transform.position;
+                    count++;
+                }
             }
+
         }
         if (count > 0)
         {
@@ -212,31 +242,15 @@ public abstract class Agent : MonoBehaviour
                         //it turns left
                         desiredVelocity += -right * physicObject.maxSpeed;
                     }
-                    else if(rightDot < 0)
+                    else if (rightDot < 0)
                     {
                         //obstacle is on left 
                         //it turns right
                         desiredVelocity += right * physicObject.maxSpeed;
                         //i think i did something wrong? sometimes the player goes through the obstacles, idk how to fix it
                     }
-
-                    /*
-                     if (rightDot > 0)
-                    {
-                        //obstacle is on right
-                        //it turns left
-                        desiredVelocity += right * -physicObject.maxSpeed;
-                    }
-                    else if(rightDot < 0)
-                    {
-                        //obstacle is on left 
-                        //it turns right
-                        desiredVelocity += right * physicObject.maxSpeed;
-                        //i think i did something wrong? sometimes the player goes through the obstacles, idk how to fix it
-                    }
-                    */
                 }
-                desiredVelocity = desiredVelocity/spawnManager.obstacles.Count;
+                desiredVelocity = desiredVelocity / spawnManager.obstacles.Count;
                 steeringForce = desiredVelocity - physicObject.Velocity;
             }
         }
@@ -278,6 +292,14 @@ public abstract class Agent : MonoBehaviour
         {
             Gizmos.DrawLine(transform.position, pos);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        //called before playmode
+        Gizmos.color = Color.yellow;
+        if (spriteRenderer != null)
+        { Gizmos.DrawWireCube(transform.position, spriteRenderer.bounds.size); }
     }
 
 }
