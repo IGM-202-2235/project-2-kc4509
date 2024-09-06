@@ -76,7 +76,7 @@ _Background floatly decorations_
 
 _There is one fish that doesn't change colors_
 _I tried to fix the background and I ended up breaking my entire code so I reverted it to a version that works_
-_My obstacles might be off since the background is off, I don't know how to fix it_
+_My obstacles might be off since the background is off.
 
 ### Requirements not completed
 
